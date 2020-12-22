@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  s3:
+    restart: always
+    hostname: s3
+    image: 'minio/minio'
+    ports:
+      - 7000:9000
+    command:
+      - server
+      - /data
+    environment:
+      MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+      MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - s3
+    entrypoint: >
+      /bin/sh -c "
+      sleep 2;
+      /usr/bin/mc config host add myminio http://s3:7000 AKIAIOSFODNN7EXAMPLE wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY;
+      /usr/bin/mc rm -r --force myminio/somebucket;
+      /usr/bin/mc mb myminio/somebucket;
+      /usr/bin/mc policy download myminio/somebucket;
+      exit 0;
+      "
