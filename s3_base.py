@@ -7,7 +7,7 @@ async def main():
     session = aiobotocore.get_session()
     async with session.create_client(service_name='s3',
                       use_ssl=False, endpoint_url='http://localhost:7000',
-                      aws_access_key_id='AKIAIOSFODNN7EXAMPLE', aws_secret_access_key='wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+                      aws_access_key_id='AKIAIOSFODNN7EXAMPLE', aws_secret_access_key='wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY222'
                                      , region_name='us-west-2') as client:
         resp = await client.put_object(
             Bucket='test',
