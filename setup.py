@@ -8,6 +8,6 @@ setup(
     author='Ivan Mescherinov',
     author_email='',
     license='unlicense',
-    packages=['s3_base.py'],
+    packages=['src'],
     zip_safe=False
 )
