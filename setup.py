@@ -8,6 +8,6 @@ setup(
     author='Ivan Mescherinov',
     author_email='',
     license='unlicense',
-    packages=['src'],
+    packages=['custom_pkg'],
     zip_safe=False
 )
