@@ -1,3 +1,4 @@
 import this
 
-print("test")
+def my_custom_print():
+  print("test")
